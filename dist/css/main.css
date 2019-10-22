@@ -21,7 +21,7 @@
       transform: rotate(-45deg) translate(7px, -6px); }
 
 .menu {
-  position: filed;
+  position: fixed;
   top: 0;
   width: 100%;
   opacity: 0.9;
@@ -94,7 +94,7 @@
   box-sizing: border-box; }
 
 body {
-  background-color: #444;
+  background: #444;
   color: #fff;
   height: 100%;
   margin: 0;
@@ -178,7 +178,7 @@ main {
     grid-area: job3; }
   .about-info .job {
     background: #515151;
-    padding: 0.5em;
+    padding: 0.5rem;
     border-bottom: #eece1a 5px solid; }
 
 .projects {
@@ -192,6 +192,25 @@ main {
       opacity: 0.5;
       border-color: #eece1a;
       transition: all 0.5s ease-out; }
+
+.boxes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 1rem; }
+  .boxes div {
+    font-size: 2rem;
+    border: 3px #fff solid;
+    padding: 1.5rem 2.5rem;
+    margin-bottom: 3rem;
+    transition: all 0.5s ease-out; }
+    .boxes div:hover {
+      padding: 0.5rem 1.5rem;
+      background: #eece1a;
+      color: #000; }
+      .boxes div:hover span {
+        color: #000; }
 
 .btn, .btn-dark, .btn-light {
   display: block;
