@@ -1,15 +1,14 @@
 @import "config";
 @import "menu";
-@import "mobile";
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  @include background();
+  @include background;
   background-color: $primary-color;
-  color: #fff;
+  color: set-text-color($primary-color);
   height: 100%;
   margin: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -51,17 +50,18 @@ header {
 
 main {
   padding: 4rem;
-  height: 100%;
+  // Making a footer stick to the bottom
+  min-height: calc(100vh - 60px);
 
   .icons {
     margin-top: 1rem;
 
     a {
       padding: 0.4rem;
+      @include easeOut();
 
       &:hover {
         color: $secondary-color;
-        @include easeOut();
       }
     }
   }
@@ -74,99 +74,51 @@ main {
   }
 }
 
-// Menu Overlay
+.about-info {
+  display: grid;
+  grid-gap: 30px;
+  grid-template-areas:
+    "bioimage bio bio"
+    "job1 job2 job3";
+  grid-template-columns: repeat(3, 1fr);
 
-.menu {
-  position: filed;
-  top: 0;
-  width: 100%;
-  opacity: 0.9;
-  visibility: hidden;
-
-  &.show {
-    visibility: visible;
+  .bio-image {
+    grid-area: bioimage;
+    margin: auto;
+    border-radius: 50%;
+    border: $secondary-color 3px solid;
   }
 
-  &-branding,
-  &-nav {
-    display: flex;
-    flex-flow: column wrap;
-    align-items: center;
-    justify-content: center;
-    float: left;
-    width: 50%;
-    height: 100vh;
-    overflow: hidden;
+  .bio {
+    grid-area: bio;
+    font-size: 1.5rem;
   }
 
-  &-nav {
-    margin: 0;
-    padding: 0;
-    background: darken($primary-color, 5);
-    list-style: none;
-    transform: translate3d(0, -100%, 0);
-    @include easeOut();
-
-    &.show {
-      // Slide in from top
-      transform: translate3d(0, 0, 0);
-    }
+  .job-1 {
+    grid-area: job1;
   }
 
-  // Branding Side
-  &-branding {
-    background: $primary-color;
-    transform: translate3d(0, 100%, 0);
-    @include easeOut();
-
-    &.show {
-      // Slide in from bottom
-      transform: translate3d(0, 0, 0);
-    }
-
-    .portrait {
-      width: 250px;
-      height: 250px;
-      background: url("../img/portrait.jpg");
-      border-radius: 50%;
-      border: solid 3px $secondary-color;
-    }
+  .job-2 {
+    grid-area: job2;
   }
 
-  .nav-item {
-    transform: translate3d(600px, 0, 0);
-    @include easeOut();
-
-    &.show {
-      // Slide in from right
-      transform: translate3d(0, 0, 0);
-    }
-
-    &.current > a {
-      color: $secondary-color;
-    }
+  .job-3 {
+    grid-area: job3;
   }
 
-  .nav-link {
-    display: inline-block;
-    position: relative;
-    font-size: 30px;
-    text-transform: uppercase;
-    padding: 1rem 0;
-    font-weight: 300;
-    color: #fff;
-    text-decoration: none;
-    @include easeOut();
-
-    &:hover {
-      color: $secondary-color;
-    }
+  .job {
+    background: lighten($primary-color, 5);
+    padding: 0.5em;
+    border-bottom: $secondary-color 5px solid;
   }
 }
 
-// Delay each nav item slide by 0.1s
-@for $x from 1 through 4 {
-  .nav-item:nth-child(#{$x}) {
-    transition-delay: $x * 0.1s;
-  }
+#main-footer {
+  text-align: center;
+  padding: 1rem;
+  background: darken($primary-color, 10);
+  color: set-text-color($primary-color);
+  height: 60px;
 }
+
+@import "mobile";
