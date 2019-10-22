@@ -6,14 +6,14 @@
   right: 35px;
   top: 35px;
   cursor: pointer;
-  @include easeOut();
+  @include easeOut;
 
   .btn-line {
     width: 28px;
     height: 3px;
     margin: 0 0 5px 0;
     background: set-text-color($primary-color);
-    @include easeOut();
+    @include easeOut;
   }
 
   // Rotate Into X With Menu Lines
@@ -67,7 +67,7 @@
     background: darken($primary-color, 5);
     list-style: none;
     transform: translate3d(0, -100%, 0);
-    @include easeOut();
+    @include easeOut;
 
     &.show {
       // Slide in from top
@@ -79,7 +79,7 @@
   &-branding {
     background: $primary-color;
     transform: translate3d(0, 100%, 0);
-    @include easeOut();
+    @include easeOut;
 
     &.show {
       // Slide in from bottom
@@ -97,7 +97,7 @@
 
   .nav-item {
     transform: translate3d(600px, 0, 0);
-    @include easeOut();
+    @include easeOut;
 
     &.show {
       // Slide in from right
@@ -118,7 +118,7 @@
     font-weight: 300;
     color: set-text-color($primary-color);
     text-decoration: none;
-    @include easeOut();
+    @include easeOut;
 
     &:hover {
       color: $secondary-color;
